@@ -1,4 +1,4 @@
-package com.example.httptest;
+package com.example.xushuoWeatherJingZhe;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

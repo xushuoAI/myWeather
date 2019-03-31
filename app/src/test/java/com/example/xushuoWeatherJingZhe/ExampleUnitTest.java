@@ -1,4 +1,4 @@
-package com.example.httptest;
+package com.example.xushuoWeatherJingZhe;
 
 import org.junit.Test;
 

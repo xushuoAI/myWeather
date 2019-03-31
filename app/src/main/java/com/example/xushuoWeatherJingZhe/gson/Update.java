@@ -1,4 +1,4 @@
-package com.example.httptest.gson;
+package com.example.xushuoWeatherJingZhe.gson;
 
 public class Update {
 

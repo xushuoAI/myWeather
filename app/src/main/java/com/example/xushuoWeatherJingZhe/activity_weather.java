@@ -1,4 +1,4 @@
-package com.example.httptest;
+package com.example.xushuoWeatherJingZhe;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -12,7 +12,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -23,15 +22,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.example.httptest.adapter.ForecastAdapter;
-import com.example.httptest.gson.Forecast;
-import com.example.httptest.gson.LifeStyle;
-import com.example.httptest.gson.Suggestion;
-import com.example.httptest.gson.Weather;
-import com.example.httptest.gson.WeatherForeCast;
-import com.example.httptest.service.AutoUpdateService;
-import com.example.httptest.util.HttpUtil;
-import com.example.httptest.util.Utility;
+import com.example.xushuoWeatherJingZhe.adapter.ForecastAdapter;
+import com.example.xushuoWeatherJingZhe.gson.Forecast;
+import com.example.xushuoWeatherJingZhe.gson.LifeStyle;
+import com.example.xushuoWeatherJingZhe.gson.Suggestion;
+import com.example.xushuoWeatherJingZhe.gson.Weather;
+import com.example.xushuoWeatherJingZhe.gson.WeatherForeCast;
+import com.example.xushuoWeatherJingZhe.service.AutoUpdateService;
+import com.example.xushuoWeatherJingZhe.util.HttpUtil;
+import com.example.xushuoWeatherJingZhe.util.Utility;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -40,7 +39,6 @@ import java.util.List;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
-import okhttp3.internal.Util;
 
 public class activity_weather extends AppCompatActivity {
 

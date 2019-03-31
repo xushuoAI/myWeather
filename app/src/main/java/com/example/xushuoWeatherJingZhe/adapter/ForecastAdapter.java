@@ -1,4 +1,4 @@
-package com.example.httptest.adapter;
+package com.example.xushuoWeatherJingZhe.adapter;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -7,11 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.httptest.R;
-import com.example.httptest.gson.Forecast;
-import com.example.httptest.gson.WeatherForeCast;
-
-import org.w3c.dom.Text;
+import com.example.xushuoWeatherJingZhe.R;
+import com.example.xushuoWeatherJingZhe.gson.Forecast;
 
 import java.util.List;
 

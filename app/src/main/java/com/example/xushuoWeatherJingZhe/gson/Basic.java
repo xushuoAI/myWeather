@@ -1,6 +1,4 @@
-package com.example.httptest.gson;
-
-import com.google.gson.annotations.SerializedName;
+package com.example.xushuoWeatherJingZhe.gson;
 
 public class Basic {
     //@SerializedName用于将json中的属性与java中的属性对应起来。

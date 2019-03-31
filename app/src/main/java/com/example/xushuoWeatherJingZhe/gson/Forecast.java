@@ -1,6 +1,4 @@
-package com.example.httptest.gson;
-
-import com.google.gson.annotations.SerializedName;
+package com.example.xushuoWeatherJingZhe.gson;
 
 public class Forecast {
 

@@ -1,13 +1,13 @@
-package com.example.httptest.util;
+package com.example.xushuoWeatherJingZhe.util;
 
 import android.text.TextUtils;
 
-import com.example.httptest.db.City;
-import com.example.httptest.db.County;
-import com.example.httptest.db.Province;
-import com.example.httptest.gson.Suggestion;
-import com.example.httptest.gson.Weather;
-import com.example.httptest.gson.WeatherForeCast;
+import com.example.xushuoWeatherJingZhe.db.City;
+import com.example.xushuoWeatherJingZhe.db.County;
+import com.example.xushuoWeatherJingZhe.db.Province;
+import com.example.xushuoWeatherJingZhe.gson.Suggestion;
+import com.example.xushuoWeatherJingZhe.gson.Weather;
+import com.example.xushuoWeatherJingZhe.gson.WeatherForeCast;
 import com.google.gson.Gson;
 
 import org.json.JSONArray;

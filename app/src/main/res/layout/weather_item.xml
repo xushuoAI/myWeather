@@ -28,6 +28,7 @@
                     android:layout_gravity="center_horizontal"
                     android:textColor="#fff"
                     android:textSize="15sp"
+                    android:layout_margin="10dp"
                     android:text="23℃~24℃"
 
                     />

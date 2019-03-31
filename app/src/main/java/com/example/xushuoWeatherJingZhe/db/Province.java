@@ -1,4 +1,4 @@
-package com.example.httptest.db;
+package com.example.xushuoWeatherJingZhe.db;
 
 import org.litepal.crud.DataSupport;
 

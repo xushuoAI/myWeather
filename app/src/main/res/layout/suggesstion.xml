@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
@@ -16,26 +17,47 @@
         android:textSize="20sp"
         />
     <TextView
+        android:id="@+id/comfort"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="15dp"
+        android:textColor="#fff"
+        android:textSize="15dp"
+        android:text="舒适度指数"
+
+        />
+
+    <TextView
         android:id="@+id/comfort_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="6dp"
+        android:text="今天夜间不太热也不太冷，风力不大，相信您在这样的天气条件下，应会感到比较清爽和舒"
         android:textColor="#fff"
-
-        />
+        android:textSize="12dp"
+        tools:text="今天夜间不太热也不太冷，风力不大，相信您在这样的天气条件下，应会感到比较清爽和舒" />
     <TextView
-        android:id="@+id/car_wash_text"
+        android:id="@+id/clothes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="15dp"
         android:textColor="#fff"
+        android:textSize="15dp"
+        android:text="穿衣建议"
         />
     <TextView
-        android:id="@+id/sport_text"
+        android:id="@+id/clothes_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="15dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="15dp"
         android:textColor="#fff"
+        android:textSize="12dp"
+        android:text="建议着薄外套、开衫牛仔衫裤等服装。年老体弱者应适当添加衣物，宜着夹克衫、薄毛衣等。"
         />
 
 

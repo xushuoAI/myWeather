@@ -2,7 +2,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="?attr/actionBarSize">
+    android:layout_height="?attr/actionBarSize"
+    android:background="#8000"
+    >
 
     <TextView
         android:id="@+id/title_city"
@@ -14,17 +16,8 @@
         android:textSize="20sp"
         tools:text="测试" />
 
-    <TextView
-        android:id="@+id/title_update_time"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:layout_marginRight="10dp"
-        android:textColor="#fff"
-        android:textSize="16sp"
 
-        tools:text="测试" />
+
 
     <Button
         android:id="@+id/nav_button"
@@ -36,6 +29,15 @@
         android:background="@drawable/ic_home"
 
         />
+
+    <Button
+        android:id="@+id/plus_city"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="0dp"
+        android:background="@drawable/ic_action_plus" />
 
 
 

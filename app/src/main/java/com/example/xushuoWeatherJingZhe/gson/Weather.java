@@ -1,8 +1,4 @@
-package com.example.httptest.gson;
-
-import com.google.gson.annotations.SerializedName;
-
-import java.util.List;
+package com.example.xushuoWeatherJingZhe.gson;
 
 public class Weather {
 

@@ -1,4 +1,4 @@
-package com.example.httptest.service;
+package com.example.xushuoWeatherJingZhe.service;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
@@ -9,11 +9,11 @@ import android.os.IBinder;
 import android.os.SystemClock;
 import android.preference.PreferenceManager;
 
-import com.example.httptest.gson.Suggestion;
-import com.example.httptest.gson.Weather;
-import com.example.httptest.gson.WeatherForeCast;
-import com.example.httptest.util.HttpUtil;
-import com.example.httptest.util.Utility;
+import com.example.xushuoWeatherJingZhe.gson.Suggestion;
+import com.example.xushuoWeatherJingZhe.gson.Weather;
+import com.example.xushuoWeatherJingZhe.gson.WeatherForeCast;
+import com.example.xushuoWeatherJingZhe.util.HttpUtil;
+import com.example.xushuoWeatherJingZhe.util.Utility;
 
 import java.io.IOException;
 

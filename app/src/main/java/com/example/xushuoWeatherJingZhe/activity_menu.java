@@ -1,7 +1,6 @@
-package com.example.httptest;
+package com.example.xushuoWeatherJingZhe;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -14,7 +13,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.example.httptest.db.County;
+import com.example.xushuoWeatherJingZhe.db.County;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
