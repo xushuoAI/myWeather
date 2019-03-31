@@ -9,7 +9,9 @@ import android.os.IBinder;
 import android.os.SystemClock;
 import android.preference.PreferenceManager;
 
+import com.example.httptest.gson.Suggestion;
 import com.example.httptest.gson.Weather;
+import com.example.httptest.gson.WeatherForeCast;
 import com.example.httptest.util.HttpUtil;
 import com.example.httptest.util.Utility;
 
@@ -62,10 +64,14 @@ public class AutoUpdateService extends Service {
 
         SharedPreferences prefs=PreferenceManager.getDefaultSharedPreferences(this);
         String weatherString=prefs.getString("weather",null);
+
+
         if (weatherString!=null){
             Weather weather=Utility.handleWeatherResponse(weatherString);
             String weatherId=weather.basic.cid;
             String weatherUrl="https://free-api.heweather.net/s6/weather/now?location="+weatherId+"&key=657004efd4694b4fb8ec38d4366f58e1";
+            String weatherForecastUrl = "https://free-api.heweather.net/s6/weather/forecast?location="+weatherId+"&key=657004efd4694b4fb8ec38d4366f58e1";
+            String weatherLifeStyleUrl = "https://free-api.heweather.net/s6/weather/lifestyle?location="+weatherId+"&key=657004efd4694b4fb8ec38d4366f58e1";
             HttpUtil.sendOkHttpRequest(weatherUrl, new Callback() {
                 @Override
                 public void onFailure(Call call, IOException e) {
@@ -83,16 +89,56 @@ public class AutoUpdateService extends Service {
                         editor.putString("weather",responseText);
                         editor.apply();
 
+                    }
+                }
+            });
 
+            HttpUtil.sendOkHttpRequest(weatherForecastUrl, new Callback() {
+                @Override
+                public void onFailure(Call call, IOException e) {
+                    e.printStackTrace();
+                }
 
+                @Override
+                public void onResponse(Call call, Response response) throws IOException {
+
+                    String responseText=response.body().string();
+                    WeatherForeCast weatherForeCast = Utility.handleWeatherForecastResponse(responseText);
+
+                    if (weatherForeCast!=null&&"ok".equals(weatherForeCast.status)){
+                        SharedPreferences.Editor editor=PreferenceManager.getDefaultSharedPreferences(AutoUpdateService.this).edit();
+                        editor.putString("weatherForeCast",responseText);
+                        editor.apply();
 
                     }
 
+                }
+            });
 
 
+
+            HttpUtil.sendOkHttpRequest(weatherLifeStyleUrl, new Callback() {
+                @Override
+                public void onFailure(Call call, IOException e) {
+                    e.printStackTrace();
+                }
+
+                @Override
+                public void onResponse(Call call, Response response) throws IOException {
+
+                    String responseText=response.body().string();
+                    Suggestion suggestion = Utility.handleSuggestionResponse(responseText);
+
+                    if (suggestion!=null&&"ok".equals(suggestion.status)){
+                        SharedPreferences.Editor editor=PreferenceManager.getDefaultSharedPreferences(AutoUpdateService.this).edit();
+                        editor.putString("LifeStyle",responseText);
+                        editor.apply();
+
+                    }
 
                 }
             });
+
         }
 
 

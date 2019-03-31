@@ -39,4 +39,22 @@ public class County extends DataSupport {
     public void setCityId(int cityId) {
         this.cityId = cityId;
     }
+
+    @Override
+    public boolean equals( Object obj) {
+        if (obj == null){
+            return false;
+        }
+        if (obj instanceof County){
+        County other = (County) obj;
+        if (!this.countyName.equals(other.getCountyName())){
+            //城市名称不一样 返回假
+            //equals 相同返回true
+            return false;
+             }
+        }
+            return true;
+
+
+    }
 }

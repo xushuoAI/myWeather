@@ -5,6 +5,7 @@ import android.text.TextUtils;
 import com.example.httptest.db.City;
 import com.example.httptest.db.County;
 import com.example.httptest.db.Province;
+import com.example.httptest.gson.Suggestion;
 import com.example.httptest.gson.Weather;
 import com.example.httptest.gson.WeatherForeCast;
 import com.google.gson.Gson;
@@ -114,6 +115,27 @@ public class Utility {
             String weatherContent=jsonArray.getJSONObject(0).toString();
 
             return new Gson().fromJson(weatherContent,WeatherForeCast.class);
+
+
+
+
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+
+        return null;
+    }
+
+    public static Suggestion handleSuggestionResponse(String response){
+
+        try{
+            JSONObject jsonObject=new JSONObject(response);
+            JSONArray jsonArray=jsonObject.getJSONArray("HeWeather6");
+            String weatherContent=jsonArray.getJSONObject(0).toString();
+
+            return new Gson().fromJson(weatherContent,Suggestion.class);
 
 
 

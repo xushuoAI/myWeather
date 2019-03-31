@@ -1,8 +1,12 @@
 package com.example.httptest;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -21,10 +25,13 @@ import com.example.httptest.db.County;
 import com.example.httptest.db.Province;
 import com.example.httptest.util.HttpUtil;
 import com.example.httptest.util.Utility;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import org.litepal.crud.DataSupport;
 
 import java.io.IOException;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,6 +53,7 @@ public class ChooseAreaFragment extends Fragment {
     private List<Province> provinceList;    //省列表
     private List<City> cityList;    //市列表
     private List<County> countyList;    //县列表
+    private List<County> cityTabList=new ArrayList<County>();;//已选择城市
 
     private Province selectedProvince;//选中的省份
     private City selectedCity;  //选中的城市
@@ -88,20 +96,27 @@ public class ChooseAreaFragment extends Fragment {
                     queryConties();
 
                 }else if (currentLevel==LEVEL_COUNTY){
+
                     String weatherId=countyList.get(position).getWeatherId();
+
 
                     if (getActivity() instanceof MainActivity){
                     //如果是该碎片在MainActivity中 处理不变
-                    Intent intent=new Intent(getActivity(),activity_weather.class);
-                    intent.putExtra("weather_id",weatherId);
-                    startActivity(intent);
-                    getActivity().finish();
+                        addCityTab(countyList.get(position));//保存已选城市
+                        Intent intent=new Intent(getActivity(),activity_weather.class);
+                        intent.putExtra("weather_id",weatherId);
+                        startActivity(intent);
+                        getActivity().finish();
                     }else if (getActivity() instanceof activity_weather){
+                        addCityTab(countyList.get(position));//保存已选城市
                         //如果是该碎片在weather_activity中 关闭滑动菜单，显示刷新进度，请求城市信息
                         activity_weather activity=(activity_weather)getActivity();
                         activity.drawerLayout.closeDrawers();
                         activity.swipeRefreshLayout.setRefreshing(true);
                         activity.requestWeather(weatherId);
+                        activity.requestWeatherForecast(weatherId);
+                        activity.requestLifeStyle(weatherId);
+                        activity.RefreshTabCity();
 
                     }
                 }
@@ -264,6 +279,39 @@ public class ChooseAreaFragment extends Fragment {
             String address="http://guolin.tech/api/china/"+provinceCode+"/"+cityCode;
             queryFromServer(address,"county");
         }
+
+
+
+    }
+
+
+    private void addCityTab(County county){
+        SharedPreferences preferences=getActivity().getSharedPreferences("TabList",Activity.MODE_MULTI_PROCESS);
+        //获得已选择的城市列表
+        String jsonCity=preferences.getString("TabList",null);
+        //获得城市列表的json数据
+        if(jsonCity!=null){
+            Gson gson=new Gson();
+            Type type=new TypeToken<List<County>>(){}.getType();
+            //解析为county list
+            cityTabList=gson.fromJson(jsonCity,type);
+        }
+
+        if (!cityTabList.contains(county)){
+            //如果不包含该城市  equals 不一样,返回假
+            cityTabList.add(county);
+
+        }
+        SharedPreferences.Editor editor=getActivity().getSharedPreferences("TabList",Context.MODE_MULTI_PROCESS).edit();
+        //将已选城市保存保sharedpreference,将List<county>转换为json 保存
+        Gson gson=new Gson();
+        jsonCity=gson.toJson(cityTabList);
+
+        editor.putString("TabList",jsonCity).commit();
+
+
+
+
 
 
 
